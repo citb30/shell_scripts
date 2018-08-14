@@ -53,3 +53,4 @@ Head "Configuring APP Service"
 
 Print "Installing Java" 
 yum install java -y &>>$LOG 
+Stat $? 
