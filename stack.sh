@@ -85,4 +85,4 @@ Print "Downloading JDBC JAR file"
 wget $JDBC_JAR_URL -O $TOMCAT_DIR/lib/$JDBC_JAR_FILE &>>$LOG 
 Stat $?
 
-sed -i -e "$ i $JDBC_CONN" $TOMCAT_DIR/conf/context.xml 
+sed -i -e '/TestDB/ d' -e"$ i $JDBC_CONN" $TOMCAT_DIR/conf/context.xml 
