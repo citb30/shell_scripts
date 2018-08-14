@@ -48,7 +48,7 @@ systemctl start mariadb &>>$LOG
 Stat $?
 
 Print "Setting up schema"
-curl -s https://raw.githubusercontent.com/citb30/project-1/master/student.sql >studennt.sql 
+curl -s https://raw.githubusercontent.com/citb30/project-1/master/student.sql >student.sql 
 mysql <student.sql 
 Stat $?
 
