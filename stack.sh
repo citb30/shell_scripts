@@ -20,7 +20,7 @@ error() {
     echo -e "\e[31m$1\e[0m"
 }
 Head() {
-    echo -e "\t\e[36;4;1m$1\e[0m"
+    echo -e "\n\t\e[36;4;1m$1\e[0m"
 }
 
 Print() {
