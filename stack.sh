@@ -37,3 +37,8 @@ Head "Configuring DB Service"
 Print "Installing MariaDB Server"
 yum install mariadb-server -y &>>$LOG 
 Stat $?
+
+Print "Starting MariaDB Service"
+systemctl enable mariadb &>>$LOG 
+systemctl start mariadb &>>$LOG 
+Stat $?
