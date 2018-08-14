@@ -28,7 +28,9 @@ Print() {
 }
 
 Stat() {
-    if [ $1 -eq 0 ]; then 
+    if [ $1 == SKIP ]; then 
+        echo -e " -- \e[33mSKIPPING\e[0m"
+    elif [ $1 -eq 0 ]; then 
         echo -e " -- \e[32mSUCCESS\e[0m"
     else
         echo -e " -- \e[31mFAILURE\e[0m"
@@ -66,9 +68,13 @@ yum install java -y &>>$LOG
 Stat $? 
 
 Print "Downloading and Extracting Tomcat"
-cd /opt
-wget -qO- $TOMCAT_URL | tar -xz 
-Stat $?
+if [ -d $TOMCAT_DIR ]; then 
+    Stat SKIP
+else 
+    cd /opt
+    wget -qO- $TOMCAT_URL | tar -xz 
+    Stat $?
+fi 
 
 rm -rf $TOMCAT_DIR/webapps/* 
 Print "Downloading Student WAR"
