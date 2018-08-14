@@ -6,6 +6,9 @@ LOG=/tmp/stack.log
 rm -f $LOG
 ID=$(id -u)
 
+TOMCAT_URL="http://redrockdigimark.com/apachemirror/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz"
+
+
 error() {
     echo -e "\e[31m$1\e[0m"
 }
@@ -54,3 +57,6 @@ Head "Configuring APP Service"
 Print "Installing Java" 
 yum install java -y &>>$LOG 
 Stat $? 
+
+Print "Downloading and Extracting Tomcat"
+wget -qO- $TOMCAT_URL | tar -xz 
