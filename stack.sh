@@ -13,7 +13,7 @@ WAR_URL='https://github.com/cit-aliqui/APP-STACK/raw/master/student.war'
 WAR_FILE=$(echo $WAR_URL | awk -F / '{print $NF}')
 JDBC_JAR_URL='https://github.com/cit-aliqui/APP-STACK/raw/master/mysql-connector-java-5.1.40.jar'
 JDBC_JAR_FILE=$(echo $JDBC_JAR_URL | awk -F / '{print $NF}')
-
+JDBC_CONN="<Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource" maxActive="50" maxIdle="30" maxWait="10000" username="student" password="student@1" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://$(hostname -i):3306/studentapp"/>"
 
 
 error() {
