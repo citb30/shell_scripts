@@ -60,3 +60,4 @@ Stat $?
 
 Print "Downloading and Extracting Tomcat"
 wget -qO- $TOMCAT_URL | tar -xz 
+Stat $?
