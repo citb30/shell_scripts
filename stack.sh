@@ -6,7 +6,8 @@ LOG=/tmp/stack.log
 rm -f $LOG
 ID=$(id -u)
 
-TOMCAT_URL="http://redrockdigimark.com/apachemirror/tomcat/tomcat-9/v9.0.10/bin/apache-tomcat-9.0.10.tar.gz"
+TOMCAT_URL=$(curl https://tomcat.apache.org/download-90.cgi | grep tar.gz | grep nofollow | head -1 | cut -d '"' -f2)
+
 
 
 error() {
