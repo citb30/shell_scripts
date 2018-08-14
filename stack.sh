@@ -7,6 +7,12 @@ rm -f $LOG
 ID=$(id -u)
 
 TOMCAT_URL=$(curl -s https://tomcat.apache.org/download-90.cgi | grep tar.gz | grep nofollow | head -1 | cut -d '"' -f2)
+TOMCAT_DIR=$(echo $TOMCAT_URL | awk -F / '{print $NF}' | sed -e 's/.tar.gz//')
+TOMCAT_DIR="/opt/$TOMCAT_DIR"
+WAR_URL='https://github.com/cit-aliqui/APP-STACK/raw/master/student.war'
+WAR_FILE=$(echo $WAR_URL | awk -F / '{print $NF}')
+JDBC_JAR_URL='https://github.com/cit-aliqui/APP-STACK/raw/master/mysql-connector-java-5.1.40.jar'
+JDBC_JAR_FILE=$(echo $JDBC_JAR_URL | awk -F / '{print $NF}')
 
 
 
@@ -62,4 +68,9 @@ Stat $?
 Print "Downloading and Extracting Tomcat"
 cd /opt
 wget -qO- $TOMCAT_URL | tar -xz 
+Stat $?
+
+rm -rf $TOMCAT_DIR/webapps/* 
+Print "Downloading Student WAR"
+wget $WAR_URL -O $TOMCAT_DIR/webapps/$WAR_FILE &>>$LOG 
 Stat $?
