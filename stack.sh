@@ -74,3 +74,7 @@ rm -rf $TOMCAT_DIR/webapps/*
 Print "Downloading Student WAR"
 wget $WAR_URL -O $TOMCAT_DIR/webapps/$WAR_FILE &>>$LOG 
 Stat $?
+
+Print "Downloading JDBC JAR file"
+wget $JDBC_JAR_URL -O $TOMCAT_DIR/lib/$JDBC_JAR_FILE &>>$LOG 
+Stat $?
