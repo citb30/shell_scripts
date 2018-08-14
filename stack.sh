@@ -59,5 +59,6 @@ yum install java -y &>>$LOG
 Stat $? 
 
 Print "Downloading and Extracting Tomcat"
+cd /opt
 wget -qO- $TOMCAT_URL | tar -xz 
 Stat $?
