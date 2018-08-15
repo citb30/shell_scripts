@@ -137,7 +137,7 @@ USAGE() {
 }
 
 ### Main Program
-read -p 'Choose Server to Install [WEB|APP|DB]: ' choice 
+choice=$1s
 choice=$(echo $choice | tr [a-z] [A-Z])
 
 case $choice in 
