@@ -131,3 +131,19 @@ WEB_SETUPF() {
     Stat $?
 }
 
+### Main Program
+read -p 'Choose Server to Install [WEB|APP|DB]: ' choice 
+choice=$(echo $choice | tr [a-z] [A-Z])
+
+case $choice in 
+    WEB) 
+        WEB_SETUPF ;;
+    APP) 
+        APP_SETUPF ;;
+    DB)
+        DB_SETUPF ;;
+    *) 
+        error "Choice should be WEB | APP | DB "
+        exit 1
+        ;;
+esac 
