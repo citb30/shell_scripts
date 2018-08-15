@@ -122,4 +122,4 @@ Stat $?
 Print "Starting HTTPD Server"
 systemctl enable httpd &>>$LOG 
 systemctl restart httpd &>>$LOG 
- 
+Stat $?
