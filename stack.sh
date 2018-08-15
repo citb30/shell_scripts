@@ -97,3 +97,28 @@ sleep 5
 Print "Starting Tomcat" 
 $TOMCAT_DIR/bin/startup.sh &>>$LOG 
 Stat $?
+
+## Install APP Service.
+Head "Configuring WEB Service"
+
+Print "Installing HTTPD Server"
+yum install httpd -y 
+Stat $?
+
+Print "Downloading Mod_JK Library"
+wget https://github.com/citb30/project-1/raw/master/mod_jk.so -O /etc/httpd/modules/mod_jk.so &>>$LOG 
+Stat $?
+
+Print "Setting up Mod_JK Configurations"
+echo 'LoadModule jk_module modules/mod_jk.so
+JkWorkersFile conf.d/worker.properties
+JkMount /student local
+JkMount /student/* local' >/etc/httpd/conf.d/mod_jk.conf 
+echo 'worker.list=local
+worker.local.host=localhost
+worker.local.port=8009' >/etc/httpd/conf.d/worker.properties 
+Stat $? 
+
+Print "Starting HTTPD Server"
+systemctl enable httpd &>>$LOG 
+systemctl restart httpd &>>$LOG 
