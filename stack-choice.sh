@@ -137,7 +137,7 @@ USAGE() {
 }
 
 ### Main Program
-choice=$1s
+choice=$1
 choice=$(echo $choice | tr [a-z] [A-Z])
 
 case $choice in 
