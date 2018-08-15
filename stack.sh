@@ -102,7 +102,7 @@ Stat $?
 Head "Configuring WEB Service"
 
 Print "Installing HTTPD Server"
-yum install httpd -y 
+yum install httpd -y &>>$LOG
 Stat $?
 
 Print "Downloading Mod_JK Library"
@@ -122,3 +122,4 @@ Stat $?
 Print "Starting HTTPD Server"
 systemctl enable httpd &>>$LOG 
 systemctl restart httpd &>>$LOG 
+ 
